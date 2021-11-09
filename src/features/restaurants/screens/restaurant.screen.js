@@ -1,6 +1,12 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
-import { StyleSheet, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 export const RestaurantScreen = () => {
@@ -27,6 +33,7 @@ const styles = StyleSheet.create({
   searchView: {
     padding: 14,
     justifyContent: "center",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   mainView: {
     flex: 1,
