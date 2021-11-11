@@ -1,45 +1,34 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
-import {
-  StyleSheet,
-  View,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from "react-native";
+import styled from "styled-components";
+import { StatusBar } from "react-native";
+
+const SafeAreaview = styled.SafeAreaView`
+  flex: 1;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+`;
+
+const SearchContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
+`;
+
+const RestaurantListContainer = styled.View`
+  flex: 1;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
+
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 export const RestaurantScreen = () => {
   return (
-    <SafeAreaView style={styles.SAV}>
-      <View style={styles.searchView}>
-        <Searchbar placeholder="Search" />
-      </View>
-      <View style={styles.mainView}>
+    <SafeAreaview>
+      <SearchContainer>
+        <Searchbar />
+      </SearchContainer>
+      <RestaurantListContainer>
         <RestaurantInfoCard />
-      </View>
-    </SafeAreaView>
+      </RestaurantListContainer>
+    </SafeAreaview>
   );
 };
-
-const styles = StyleSheet.create({
-  SAV: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  searchView: {
-    padding: 14,
-    justifyContent: "center",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  mainView: {
-    flex: 1,
-    padding: 14,
-    backgroundColor: "blue",
-  },
-  searchText: {},
-  mainText: {},
-});
