@@ -1,8 +1,17 @@
 import React from "react";
-import { Text, Image, View } from "react-native";
+import { Text, Image } from "react-native";
 import styled from "styled-components/native";
 import { Card, Title, Paragraph } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
+import {
+  Titlee,
+  Icon,
+  Row,
+  Right,
+  RedText,
+  Spacer,
+  P,
+} from "./restaurant-info-card.styles";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
@@ -19,28 +28,6 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     isClosedTemp = true,
   } = restaurant;
 
-  const Titlee = styled(Title)`
-    font-family: ${(props) => props.theme.fonts.body};
-  `;
-
-  const Row = styled.View`
-    flex-direction: row;
-    align-items: center;
-  `;
-
-  const Right = styled.View`
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-end;
-  `;
-
-  const Spacer = styled.View`
-    padding-left: 8px;
-  `;
-
-  const P = styled(Paragraph)`
-    font-family: ${(props) => props.theme.fonts.heading};
-  `;
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
@@ -53,15 +40,11 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             <SvgXml xml={star} width={20} height={20} />
           ))}
           <Right>
-            {isClosedTemp && (
-              <Text variant="label" style={{ color: "red" }}>
-                CLOSED TEMPORAILY
-              </Text>
-            )}
+            {isClosedTemp && <RedText>CLOSED TEMPORAILY</RedText>}
             <Spacer />
             {isOpenedNow ? <SvgXml xml={open} width={20} height={20} /> : null}
             <Spacer />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Icon source={{ uri: icon }} />
           </Right>
         </Row>
         <P>{address}</P>
