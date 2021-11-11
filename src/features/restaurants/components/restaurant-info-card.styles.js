@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card, Title, Paragraph } from "react-native-paper";
+import { Title, Paragraph } from "react-native-paper";
 
 export const Titlee = styled(Title)`
   font-family: ${(props) => props.theme.fonts.body};

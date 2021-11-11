@@ -1,7 +1,5 @@
 import React from "react";
-import { Text, Image } from "react-native";
-import styled from "styled-components/native";
-import { Card, Title, Paragraph } from "react-native-paper";
+import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import {
   Titlee,
