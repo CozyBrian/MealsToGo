@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import {
   Titlee,
@@ -8,6 +7,7 @@ import {
   Right,
   RedText,
   Spacer,
+  RCard,
   P,
 } from "./restaurant-info-card.styles";
 import star from "../../../../assets/star";
@@ -29,9 +29,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <Card elevation={5}>
-      <Card.Cover source={{ url: photos[0] }} />
-      <Card.Content>
+    <RCard elevation={5}>
+      <RCard.Cover source={{ url: photos[0] }} />
+      <RCard.Content>
         <Titlee>{name}</Titlee>
         <Row>
           {ratingArray.map(() => (
@@ -46,7 +46,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Right>
         </Row>
         <P>{address}</P>
-      </Card.Content>
-    </Card>
+      </RCard.Content>
+    </RCard>
   );
 };
