@@ -15,6 +15,7 @@ import {
 
 import { RestaurantScreen } from "./src/features/restaurants/screens/restaurant.screen";
 import { theme } from "./src/infrastructure/theme";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,34 +31,35 @@ const Map = () => (
   </SafeArea>
 );
 
+const screenoption = ({ route }) => ({
+  tabBarIcon: ({ focused, color, size }) => {
+    let iconName;
+
+    switch (route.name) {
+      case "Restaurant":
+        iconName = focused ? "restaurant" : "restaurant-outline";
+        break;
+      case "Map":
+        iconName = focused ? "map" : "map-outline";
+        break;
+      case "Settings":
+        iconName = focused ? "settings-sharp" : "settings-outline";
+        break;
+
+      default:
+        break;
+    }
+
+    return <Ionicons name={iconName} size={size} color={color} />;
+  },
+  tabBarActiveTintColor: "tomato",
+  tabBarInactiveTintColor: "gray",
+  headerShown: false,
+});
+
 function MyTabs() {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          switch (route.name) {
-            case "Restaurant":
-              iconName = focused ? "fast-food" : "fast-food-outline";
-              break;
-            case "Map":
-              iconName = focused ? "map" : "map-outline";
-              break;
-            case "Settings":
-              iconName = focused ? "settings-sharp" : "settings-outline";
-              break;
-
-            default:
-              break;
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "gray",
-      })}
-    >
+    <Tab.Navigator screenOptions={screenoption}>
       <Tab.Screen name="Restaurant" component={RestaurantScreen} />
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Settings" component={Settings} />
@@ -81,9 +83,11 @@ export default function App() {
     <>
       <ExpoStatusBar style="auto" />
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <MyTabs />
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
     </>
   );
