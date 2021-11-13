@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect, useMemo } from "react";
-import { Children } from "react";
 
 import {
   restaurantsRequest,
