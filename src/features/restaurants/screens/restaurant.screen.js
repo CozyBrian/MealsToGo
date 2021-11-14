@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
-import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import { SafeArea } from "../../../components/utility/safe-area";
-import {
-  RestaurantList,
-  SearchContainer,
-} from "../components/restaurant-info-card.styles";
+import { RestaurantList } from "../components/restaurant-info-card.styles";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components";
+import { Search } from "../components/search.component";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -29,13 +27,10 @@ export const RestaurantScreen = () => {
           <Loading size={50} color={Colors.orange400} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
-          console.log(item);
           return <RestaurantInfoCard restaurant={item} />;
         }}
         keyExtractor={(item) => item.name}
