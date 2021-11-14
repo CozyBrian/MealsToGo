@@ -13,6 +13,7 @@ export const LocationContextProvider = ({ children }) => {
   const onSearch = (searchKeyword) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
+    console.log(searchKeyword);
     locationRequest(searchKeyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
