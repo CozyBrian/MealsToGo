@@ -19,3 +19,13 @@ export const mockImages = [
   "https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table-600x400.jpg",
   "https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-600x400.jpg",
 ];
+
+export const localImages = [
+  require("../../../../assets/MockImages/1.jpg"),
+  require("../../../../assets/MockImages/2.jpg"),
+  require("../../../../assets/MockImages/3.jpg"),
+  require("../../../../assets/MockImages/4.jpg"),
+  require("../../../../assets/MockImages/5.jpg"),
+  require("../../../../assets/MockImages/6.jpg"),
+  require("../../../../assets/MockImages/7.jpg"),
+];

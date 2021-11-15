@@ -31,7 +31,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <RCard elevation={5}>
-      <RCard.Cover source={{ url: photos[0] }} />
+      <RCard.Cover source={photos[0]} />
       <RCard.Content>
         <Titlee>{name}</Titlee>
         <Row>
