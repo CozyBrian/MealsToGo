@@ -1,4 +1,5 @@
 import { mockImages, localImages, mocks } from "./mock";
+import { Platform } from "react-native";
 import camelize from "camelize";
 
 export const restaurantsRequest = (location) => {
@@ -10,12 +11,17 @@ export const restaurantsRequest = (location) => {
     resolve(mock);
   });
 };
-
+const isAndroid = Platform.OS === "android";
 export const restaurantsTransform = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
-    restaurant.photos = restaurant.photos.map((p) => {
+    restaurant.aphotos = restaurant.photos.map((p) => {
       return localImages[Math.ceil(Math.random() * (localImages.length - 1))];
     });
+
+    restaurant.photos = restaurant.photos.map((p) => {
+      return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
+    });
+
     return {
       ...restaurant,
       address: restaurant.vicinity,
