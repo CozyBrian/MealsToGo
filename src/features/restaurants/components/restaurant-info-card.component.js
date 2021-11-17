@@ -13,6 +13,7 @@ import {
 } from "./restaurant-info-card.styles";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 const isAndroid = Platform.OS === "android";
 
@@ -36,6 +37,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   return (
     <RCard elevation={5}>
       <RCard.Cover source={isAndroid ? aphotos[0] : { url: photos[0] }} />
+      <Favourite restaurant={restaurant} />
       <RCard.Content>
         <Titlee>{name}</Titlee>
         <Row>
