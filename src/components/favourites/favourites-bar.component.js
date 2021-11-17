@@ -17,6 +17,9 @@ const Text = styled.Text`
 `;
 
 export const FavouritesBar = ({ favourites, onDetail }) => {
+  if (!favourites.length) {
+    return null;
+  }
   return (
     <FavouritesWrapper>
       <Spacer>
