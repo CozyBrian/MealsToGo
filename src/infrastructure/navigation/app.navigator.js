@@ -1,7 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "../../components/utility/safe-area";
 import { RestaurantsNavigator } from "./restaurants.navigator";
@@ -52,9 +51,5 @@ function MyTabs() {
 }
 
 export const AppNavigation = () => {
-  return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
+  return <MyTabs />;
 };
