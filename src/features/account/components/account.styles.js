@@ -42,3 +42,11 @@ export const Title = styled.Text`
   color: black;
   font-weight: bold;
 `;
+
+export const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${(props) => props.theme.space[1]};
+`;

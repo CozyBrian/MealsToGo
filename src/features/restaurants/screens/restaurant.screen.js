@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { SafeArea } from "../../../components/utility/safe-area";
@@ -8,7 +9,7 @@ import { FavouritesContext } from "../../../services/favourites/favourites.conte
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components";
 import { Search } from "../components/search.component";
-import { useState } from "react";
+import { FadeInView } from "../../../components/animation/fade.animation";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
 
 const Loading = styled(ActivityIndicator)`
@@ -44,13 +45,15 @@ export const RestaurantScreen = ({ navigation }) => {
         data={restaurants}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("RestaurantDetail", { restaurant: item })
-              }
-            >
-              <RestaurantInfoCard restaurant={item} />
-            </TouchableOpacity>
+            <FadeInView>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", { restaurant: item })
+                }
+              >
+                <RestaurantInfoCard restaurant={item} />
+              </TouchableOpacity>
+            </FadeInView>
           );
         }}
         keyExtractor={(item) => item.name}
