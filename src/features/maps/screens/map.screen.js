@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import styled from "styled-components/native";
-import MapView from "react-native-maps";
+import MapView, { Callout, Marker } from "react-native-maps";
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
 import { LocationContext } from "../../../services/location/location.context";
@@ -39,7 +39,7 @@ export const MapScreen = ({ navigation }) => {
       >
         {restaurants.map((restaurant) => {
           return (
-            <MapView.Marker
+            <Marker
               key={restaurant.name}
               title={restaurant.name}
               coordinate={{
@@ -47,7 +47,7 @@ export const MapScreen = ({ navigation }) => {
                 longitude: restaurant.geometry.location.lng,
               }}
             >
-              <MapView.Callout
+              <Callout
                 onPress={() =>
                   navigation.navigate("RestaurantDetail", {
                     restaurant: restaurant,
@@ -57,8 +57,8 @@ export const MapScreen = ({ navigation }) => {
                 <View>
                   <MapCallout restaurant={restaurant} />
                 </View>
-              </MapView.Callout>
-            </MapView.Marker>
+              </Callout>
+            </Marker>
           );
         })}
       </Map>

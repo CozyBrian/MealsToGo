@@ -31,7 +31,7 @@ export const RestaurantScreen = ({ navigation }) => {
     <SafeArea>
       {isLoading && (
         <LoadingContainer>
-          <Loading size={50} color={Colors.orange400} />
+          <Loading size={50} color={"#FB923C"} />
         </LoadingContainer>
       )}
       <Search

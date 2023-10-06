@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 import { Spacer } from "../../../components/spacer";
 import { Text } from "../../../components/text";
 import {
@@ -51,7 +51,7 @@ export const LoginScreen = () => {
           <ActivityIndicator
             style={{ padding: 16 }}
             animating={true}
-            color={Colors.blue400}
+            color={"#60A5FA"}
           />
         )}
       </AccountContainer>
